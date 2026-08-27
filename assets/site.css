@@ -1,0 +1,291 @@
+:root {
+  --azul: #0c4da2;
+  --verde: #32993d;
+  --amarelo: #fdb813;
+  --vermelho: #b03025;
+  --texto: #17212b;
+  --texto-secundario: #5a6774;
+  --borda: #dfe6ee;
+  --fundo-suave: #f7f9fc;
+  --branco: #ffffff;
+  --raio: 18px;
+  --sombra: 0 12px 30px rgba(23, 50, 77, 0.08);
+}
+
+* { box-sizing: border-box; }
+html { background: var(--branco); color-scheme: light; }
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--branco);
+  color: var(--texto);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+.faixa-ufac {
+  display: grid;
+  grid-template-columns: 5fr 2.3fr 1.25fr 1.25fr;
+  width: 100%;
+  height: 5px;
+}
+.faixa-ufac span:nth-child(1) { background: var(--azul); }
+.faixa-ufac span:nth-child(2) { background: var(--verde); }
+.faixa-ufac span:nth-child(3) { background: var(--amarelo); }
+.faixa-ufac span:nth-child(4) { background: var(--vermelho); }
+
+main {
+  width: min(100% - 32px, 680px);
+  margin-inline: auto;
+  padding: 42px 0 34px;
+}
+
+.cabecalho { text-align: center; }
+.logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 116px;
+  margin-bottom: 22px;
+}
+.logos::before {
+  content: "";
+  order: 2;
+  width: 1px;
+  height: 72px;
+  background: var(--borda);
+}
+.logo { display: block; object-fit: contain; }
+.logo-ufac { order: 1; width: 126px; max-height: 100px; }
+.logo-biblioteca { order: 3; width: 116px; max-height: 110px; }
+
+.sobrelinha {
+  margin: 0 0 9px;
+  color: var(--azul);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 7vw, 3.15rem);
+  line-height: 1.04;
+  letter-spacing: -0.042em;
+  text-wrap: balance;
+}
+.introducao {
+  max-width: 560px;
+  margin: 14px auto 0;
+  color: var(--texto-secundario);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.secao-titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 34px 0 12px;
+  color: #354351;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.secao-titulo::before {
+  content: "";
+  width: 24px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--verde);
+}
+
+.links { display: grid; gap: 12px; }
+.cartao {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  min-height: 80px;
+  padding: 14px 16px;
+  overflow: hidden;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  background: var(--branco);
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+.cartao::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: transparent;
+  transition: background 160ms ease;
+}
+.cartao:hover {
+  transform: translateY(-2px);
+  border-color: rgba(12, 77, 162, 0.35);
+  box-shadow: var(--sombra);
+}
+.cartao:hover::before { background: var(--verde); }
+.cartao:focus-visible,
+.botao:focus-visible,
+.voltar:focus-visible {
+  outline: 3px solid rgba(12, 77, 162, 0.22);
+  outline-offset: 3px;
+}
+.icone {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--fundo-suave);
+  color: var(--azul);
+}
+.icone svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.texto strong { display: block; font-size: 0.99rem; line-height: 1.3; }
+.texto span {
+  display: block;
+  margin-top: 4px;
+  color: var(--texto-secundario);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+.seta { color: var(--azul); font-size: 1.2rem; line-height: 1; }
+
+.voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  color: var(--azul);
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
+.painel {
+  margin-top: 30px;
+  padding: clamp(22px, 5vw, 34px);
+  border: 1px solid var(--borda);
+  border-radius: 22px;
+  background: var(--branco);
+  box-shadow: var(--sombra);
+}
+.aviso {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px 18px;
+  border: 1px solid rgba(253, 184, 19, 0.48);
+  border-left: 4px solid var(--amarelo);
+  border-radius: 14px;
+  background: #fffaf0;
+  color: #5e4a14;
+  line-height: 1.55;
+}
+.aviso strong { color: #44360e; }
+
+.conteudo { color: var(--texto-secundario); line-height: 1.7; }
+.conteudo p { margin: 0 0 16px; }
+.conteudo h2 {
+  margin: 28px 0 10px;
+  color: var(--texto);
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+.lista-requisitos {
+  margin: 12px 0 0;
+  padding-left: 1.25rem;
+}
+.lista-requisitos li { margin: 8px 0; }
+
+.prazo {
+  margin-top: 22px;
+  padding: 16px 18px;
+  border-left: 4px solid var(--verde);
+  border-radius: 0 12px 12px 0;
+  background: rgba(50, 153, 61, 0.08);
+  color: #285d2e;
+  line-height: 1.55;
+}
+
+.acoes {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+.botao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 15px 17px;
+  border: 1px solid var(--azul);
+  border-radius: 14px;
+  background: var(--azul);
+  color: var(--branco);
+  font-weight: 800;
+  line-height: 1.35;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+.botao:hover { transform: translateY(-2px); background: #0a438e; border-color: #0a438e; }
+.botao.secundario {
+  border-color: var(--borda);
+  background: var(--branco);
+  color: var(--azul);
+}
+.botao.secundario:hover { background: var(--fundo-suave); border-color: rgba(12, 77, 162, 0.35); }
+.botao small {
+  display: block;
+  margin-top: 3px;
+  color: inherit;
+  opacity: 0.78;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+footer {
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid var(--borda);
+  text-align: center;
+  color: #74808c;
+  font-size: 0.76rem;
+  line-height: 1.6;
+}
+footer strong { color: var(--texto); font-weight: 750; }
+.cores { display: inline-flex; gap: 5px; margin-top: 11px; }
+.cores i { display: block; width: 7px; height: 7px; border-radius: 50%; }
+.cores i:nth-child(1) { background: var(--azul); }
+.cores i:nth-child(2) { background: var(--verde); }
+.cores i:nth-child(3) { background: var(--amarelo); }
+.cores i:nth-child(4) { background: var(--vermelho); }
+
+@media (max-width: 520px) {
+  main { width: min(100% - 24px, 680px); padding-top: 34px; }
+  .logos { gap: 18px; min-height: 102px; }
+  .logos::before { height: 62px; }
+  .logo-ufac { width: 108px; max-height: 86px; }
+  .logo-biblioteca { width: 100px; max-height: 94px; }
+  .cartao { grid-template-columns: 44px 1fr auto; min-height: 76px; padding: 13px 14px; gap: 12px; border-radius: 16px; }
+  .icone { width: 44px; height: 44px; border-radius: 13px; }
+  .texto span { font-size: 0.79rem; }
+  .painel { padding: 20px 17px; border-radius: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
